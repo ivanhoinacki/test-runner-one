@@ -7,7 +7,7 @@ describe('Lista de compras controller', function() {
 
 
     it('deve validar a quantidade de itens da lista', function() {
-        browser.get('http://localhost:8000/#/listacompras');
+        browser.get('http://localhost:3000/#/listacompras');
         var listaTarefa = element.all(by.repeater('(key, item) in vm.listaTarefa'));
         expect(listaTarefa.count()).toEqual(2);
     });
