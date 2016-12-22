@@ -1,0 +1,33 @@
+<form>
+    <div class="form-group">
+        <div class="input-group">
+            <input type="text" ng-model="vm.itemDescricao" class="form-control" placeholder="Descrição">
+            <div class="input-group-btn">
+                <button class="btn btn-success" ng-model="vm.adicionarItem" ng-click="vm.onClickAddItem()">Adicionar</button>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group">
+            <label>Pesquisar</label>
+            <input type="text" ng-model="itemPesquisa" class="form-control" placeholder="Pesquisar">
+        </div>
+    </div>
+</form>
+<div class="form-group">
+    <ul class="list-group">
+        <li href="#" class="list-group-item active">
+            <h4 class="list-group-item-heading">Lista de tarefas</h4>
+        </li>
+        <li ng-repeat="(key, item) in vm.listaTarefa | filter : itemPesquisa" ng-class="item.selecionado ? 'list-group-item list-group-item-success' : 'list-group-item list-group-item-danger'">
+            <label class="list-group-item-text">
+                <input type="checkbox" ng-model="item.selecionado" class="memberName" checked="item.selecionado"/>
+                {{ item.descricao }}
+            </label>
+            <div class="form-inline">
+                <button type="button" id="btnEditar" ng-model="editar" class="btn btn-warning form-control" ng-click="vm.onClickEditar(key, vm.listaTarefa);">Editar</button>
+                <button type="button" id="btnDeletar" ng-model="deletar" ng-disabled="!item.selecionado" class="btn btn-danger form-control" ng-click="vm.onClickExcluir(vm.listaTarefa);">Excluir</button>
+            </div>
+        </li>
+    </ul>
+</div>
